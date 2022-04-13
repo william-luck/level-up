@@ -11,19 +11,19 @@ let percentage4 = 0;
 const taskButtons = document.querySelectorAll('.task-button');
 for (const node of taskButtons) {
     node.addEventListener('click', e => {
-        if ((e.target.id === 'task-name-button1') || (e.target.id === 'task-name-button2')) {
+        if (button1Clicked(e) || button2Clicked(e)) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1);
             }
-        } else if ((e.target.id === 'task-name-button3') || (e.target.id === 'task-name-button4')){
+        } else if (button3Clicked(e) || button4Clicked(e)){
             if (percentage2 < 100) {
                 percentage2 = updatePercentage(skill2PercentageNode,percentage2);
             }
-        } else if ((e.target.id === 'task-name-button5') || (e.target.id === 'task-name-button6')) {
+        } else if (button5Clicked(e) || button6Clicked(e)) {
             if (percentage3 < 100) {
                 percentage3 = updatePercentage(skill3PercentageNode, percentage3);
             }
-        } else if ((e.target.id === 'task-name-button7') || (e.target.id === 'task-name-button8')) {
+        } else if (button7Clicked(e) || button8Clicked(e)) {
             if (percentage4 < 100) {
                 percentage4 = updatePercentage(skill4PercentageNode,percentage4);
             }
@@ -37,3 +37,38 @@ function updatePercentage(node, percentage) {
     node.textContent = `Progress: ${percentage}%`;
     return percentage;
 }
+
+function button1Clicked(e) {
+    return e.target.id === 'task-name-button1';
+}
+
+function button2Clicked(e) {
+    return e.target.id === 'task-name-button2'
+}
+
+function button3Clicked(e) {
+    return e.target.id === 'task-name-button3'
+}
+
+function button4Clicked(e) {
+    return e.target.id === 'task-name-button4'
+}
+
+function button5Clicked(e) {
+    return e.target.id === 'task-name-button5'
+}
+
+function button6Clicked(e) {
+    return e.target.id === 'task-name-button6'
+}
+
+function button7Clicked(e) {
+    return e.target.id === 'task-name-button7'
+}
+
+function button8Clicked(e) {
+    return e.target.id === 'task-name-button8'
+}
+
+
+
