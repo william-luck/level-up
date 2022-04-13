@@ -12,17 +12,21 @@ const taskButtons = document.querySelectorAll('.task-button');
 for (const node of taskButtons) {
     node.addEventListener('click', e => {
         if ((e.target.id === 'task-name-button1') || (e.target.id === 'task-name-button2')) {
-            console.log("corresponds with skill 1")
-            percentage1 = updatePercentage(skill1PercentageNode, percentage1);
+            if (percentage1 < 100) {
+                percentage1 = updatePercentage(skill1PercentageNode, percentage1);
+            }
         } else if ((e.target.id === 'task-name-button3') || (e.target.id === 'task-name-button4')){
-            console.log("corresponds with skill 2")
-            percentage2 = updatePercentage(skill2PercentageNode,percentage2);
+            if (percentage2 < 100) {
+                percentage2 = updatePercentage(skill2PercentageNode,percentage2);
+            }
         } else if ((e.target.id === 'task-name-button5') || (e.target.id === 'task-name-button6')) {
-            console.log("corresponds with skill 3")
-            percentage3 = updatePercentage(skill3PercentageNode, percentage3);
+            if (percentage3 < 100) {
+                percentage3 = updatePercentage(skill3PercentageNode, percentage3);
+            }
         } else if ((e.target.id === 'task-name-button7') || (e.target.id === 'task-name-button8')) {
-            console.log("corresponds with skill 4")
-            percentage4 = updatePercentage(skill4PercentageNode,percentage4);
+            if (percentage4 < 100) {
+                percentage4 = updatePercentage(skill4PercentageNode,percentage4);
+            }
         }
 })}
 
