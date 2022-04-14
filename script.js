@@ -11,6 +11,9 @@ let percentage2 = 0;
 let percentage3 = 0;
 let percentage4 = 0;
 
+const rewardsTile = document.getElementById('reward-announcement')
+const rewardsList = document.getElementById('reward-list')
+
 
 
 // add event listener to each task button, adds logic to each set of two buttons
@@ -46,6 +49,10 @@ function updatePercentage(node, percentage) {
     percentage += 20;
     node.textContent = `Progress: ${percentage}%`;
 
+    if (percentage === 100) {
+        displayAward(node)
+    }
+
     return percentage;
 }
 
@@ -53,6 +60,34 @@ function updatePercentage(node, percentage) {
 function updateProgressBar(progressBar, percentage) {
     progressBar.src = `images/${percentage}-percent.png`;
 }
+
+function displayAward(node) {
+    rewardsTile.textContent = "Earned rewards:"
+
+    if (node.id === 'skill-1-percentage') {
+        const reward1 = document.createElement('p');
+        reward1.textContent = "Earned reward associated with skill 1 (image)"
+        rewardsList.appendChild(reward1);
+    } else if (node.id === 'skill-2-percentage') {
+        const reward2 = document.createElement('p');
+        reward2.textContent = "Earned reward associated with skill 2 (image)"
+        rewardsList.appendChild(reward2);
+    } else if (node.id === 'skill-3-percentage') {
+        const reward3 = document.createElement('p');
+        reward3.textContent = "Earned reward associated with skill 3 (image)"
+        rewardsList.appendChild(reward3);
+    } else if (node.id === 'skill-4-percentage') {
+        const reward4 = document.createElement('p')
+        reward4.textContent = "Earned reward associated with skill 4 (image)"
+        rewardsList.appendChild(reward4);
+    }
+
+
+
+}
+
+// const skill1PercentageNode = document.getElementById('skill-1-percentage')
+// const skill2PercentageNode = document.getElementById('skill-2-percentage')
 
 
 
