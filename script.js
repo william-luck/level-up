@@ -14,6 +14,8 @@ let percentage4 = 0;
 const rewardsTile = document.getElementById('reward-announcement')
 const rewardsList = document.getElementById('reward-list')
 
+const taskLog = document.getElementById('task-log')
+
 
 
 // add event listener to each task button, adds logic to each set of two buttons
@@ -24,6 +26,7 @@ for (const node of taskButtons) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1);
                 updateProgressBar(skill1ProgressBar, percentage1);
+                addTaskCompleted(e);
             }
         } else if (button3Clicked(e) || button4Clicked(e)){
             if (percentage2 < 100) {
@@ -86,8 +89,11 @@ function displayAward(node) {
 
 }
 
-// const skill1PercentageNode = document.getElementById('skill-1-percentage')
-// const skill2PercentageNode = document.getElementById('skill-2-percentage')
+function addTaskCompleted(e) {
+    const completedTask = document.createElement('p')
+    completedTask.textContent = e.target.textContent
+
+}
 
 
 
