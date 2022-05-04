@@ -97,6 +97,15 @@ function addTaskCompleted(e) {
     completedTask.textContent = e.target.textContent;
     taskLog.appendChild(completedTask)
 
+    const commentNode = document.createElement('ul')
+    const commentText = document.createElement('li')
+    commentNode.appendChild(commentText)
+
+    commentText.textContent = 'Add note.. (click to change)'
+    completedTask.appendChild(commentNode)
+
+    commentText.contentEditable = 'true'
+
 }
 
 
