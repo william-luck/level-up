@@ -32,16 +32,19 @@ for (const node of taskButtons) {
             if (percentage2 < 100) {
                 percentage2 = updatePercentage(skill2PercentageNode,percentage2);
                 updateProgressBar(skill2ProgressBar, percentage2);
+                addTaskCompleted(e)
             }
         } else if (button5Clicked(e) || button6Clicked(e)) {
             if (percentage3 < 100) {
                 percentage3 = updatePercentage(skill3PercentageNode, percentage3);
                 updateProgressBar(skill3ProgressBar, percentage3);
+                addTaskCompleted(e)
             }
         } else if (button7Clicked(e) || button8Clicked(e)) {
             if (percentage4 < 100) {
                 percentage4 = updatePercentage(skill4PercentageNode,percentage4);
                 updateProgressBar(skill4ProgressBar, percentage4);
+                addTaskCompleted(e)
             }
         }
 })}
@@ -91,7 +94,8 @@ function displayAward(node) {
 
 function addTaskCompleted(e) {
     const completedTask = document.createElement('p')
-    completedTask.textContent = e.target.textContent
+    completedTask.textContent = e.target.textContent;
+    taskLog.appendChild(completedTask)
 
 }
 
