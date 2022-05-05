@@ -18,9 +18,9 @@ body {
 
 
 #task-log {
-    padding-right: 50px;
-    width: 220px;
+    width: 435px;
     vertical-align: top;
+    padding-left: 20px;
 }
 
 #reward-list {
@@ -36,10 +36,13 @@ h3 {
 }
 
 .task-button {
-    width: 220px;
+    width: 250px;
     border-radius: 6px;
     background-color: #008CBA;
     color: white;
+    font-weight: bold;
+    margin: 1px;
+    
 }
 
 .task-button:hover{
@@ -58,3 +61,8 @@ h3 {
     padding-bottom: 5px;
 }
 
+#game-row {
+    border: 5px solid;
+    border-radius: 6px;
+    margin: 10px;
+}
