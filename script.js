@@ -18,6 +18,9 @@ const taskLog = document.getElementById('task-log')
 
 const key = config.accessKey;
 
+const stickFigureContainer = document.getElementById('stick-figure-container')
+
+
 
 
 
@@ -30,25 +33,25 @@ for (const node of taskButtons) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1);
                 updateProgressBar(skill1ProgressBar, percentage1);
-                addTaskCompleted(e);
+                // addTaskCompleted(e);
             }
         } else if (button3Clicked(e) || button4Clicked(e)){
             if (percentage2 < 100) {
                 percentage2 = updatePercentage(skill2PercentageNode,percentage2);
                 updateProgressBar(skill2ProgressBar, percentage2);
-                addTaskCompleted(e)
+                // addTaskCompleted(e)
             }
         } else if (button5Clicked(e) || button6Clicked(e)) {
             if (percentage3 < 100) {
                 percentage3 = updatePercentage(skill3PercentageNode, percentage3);
                 updateProgressBar(skill3ProgressBar, percentage3);
-                addTaskCompleted(e)
+                // addTaskCompleted(e)
             }
         } else if (button7Clicked(e) || button8Clicked(e)) {
             if (percentage4 < 100) {
                 percentage4 = updatePercentage(skill4PercentageNode,percentage4);
                 updateProgressBar(skill4ProgressBar, percentage4);
-                addTaskCompleted(e)
+                // addTaskCompleted(e)
             }
         }
 })}
@@ -91,10 +94,31 @@ function displayAward(node) {
         reward4.textContent = "Earned reward associated with skill 4 (image)"
         rewardsList.appendChild(reward4);
     }
-
-
-
 }
+
+// gets random smiling face from API to display on avatar
+fetch('https://emoji-api.com/emojis?search=smiling&access_key=' + key)
+.then(response => response.json())
+.then(data => {
+    const randomIndex = Math.floor(Math.random() * 29)
+    const emoji = data[randomIndex].character
+    addRandomFace(emoji)
+})
+
+// adds random smiling face to avatar, positions on div
+function addRandomFace(emoji) {
+    const randomFace = document.createElement('p')
+    randomFace.id = 'random-face'
+    randomFace.textContent = `${emoji}`;
+    randomFace.style.position = 'absolute';
+    randomFace.style.left = '18px';
+    randomFace.style.top = '-47px'
+    randomFace.style.fontSize = '45px'
+    stickFigureContainer.appendChild(randomFace)
+}
+
+
+
 
 function addTaskCompleted(e) {
     const completedTask = document.createElement('p')
