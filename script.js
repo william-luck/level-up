@@ -33,25 +33,25 @@ for (const node of taskButtons) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1);
                 updateProgressBar(skill1ProgressBar, percentage1);
-                // addTaskCompleted(e);
+                addTaskCompleted(e);
             }
         } else if (button3Clicked(e) || button4Clicked(e)){
             if (percentage2 < 100) {
                 percentage2 = updatePercentage(skill2PercentageNode,percentage2);
                 updateProgressBar(skill2ProgressBar, percentage2);
-                // addTaskCompleted(e)
+                addTaskCompleted(e)
             }
         } else if (button5Clicked(e) || button6Clicked(e)) {
             if (percentage3 < 100) {
                 percentage3 = updatePercentage(skill3PercentageNode, percentage3);
                 updateProgressBar(skill3ProgressBar, percentage3);
-                // addTaskCompleted(e)
+                addTaskCompleted(e)
             }
         } else if (button7Clicked(e) || button8Clicked(e)) {
             if (percentage4 < 100) {
                 percentage4 = updatePercentage(skill4PercentageNode,percentage4);
                 updateProgressBar(skill4ProgressBar, percentage4);
-                // addTaskCompleted(e)
+                addTaskCompleted(e)
             }
         }
 })}
@@ -130,10 +130,6 @@ function addHeart() {
     })
 }
 
-
-
-
-
 function addAxe() {
     fetch ('https://emoji-api.com/emojis/axe?access_key=' + key)
     .then(response => response.json())
@@ -211,20 +207,67 @@ function addFollowers() {
 
 
 function addTaskCompleted(e) {
+    // adds name of completed task to tag log
     const completedTask = document.createElement('p')
     completedTask.textContent = e.target.textContent;
     taskLog.appendChild(completedTask)
+
+    // creates form underneath the completed task
+    const inputForm = document.createElement('form')
+    inputForm.id = 'input-form'
+    completedTask.appendChild(inputForm)
+
+    // Adds comment bar
+    const inputText = document.createElement('input')
+    inputText.type = 'text'
+    inputText.value = ''
+    inputText.placeholder = 'Add comment..'
+    inputText.id = 'comment'
+    inputForm.appendChild(inputText)
+
+    // Adds submit button 
+    const submitButton = document.createElement('input')
+    submitButton.type = 'submit'
+    submitButton.name = 'submit'
+    submitButton.value = 'Add'
+    inputForm.appendChild(submitButton)
+
+    // Adds comment to task completed upon submission of form
+    inputForm.addEventListener('submit', addCommentToTask)        
+}
+
+//Removes form bar, adds comment to task.
+function addCommentToTask(e) {
+    e.preventDefault();
+
+    const comment = e.target.comment.value
+    const completedTask = e.target.parentNode  
+
+    e.target.remove()
 
     const commentNode = document.createElement('ul')
     const commentText = document.createElement('li')
     commentNode.appendChild(commentText)
 
-    commentText.textContent = 'Add note.. (click to change)'
+    commentText.textContent = `Comment: ${comment}`
+    
     completedTask.appendChild(commentNode)
 
-    commentText.contentEditable = 'true'
+    
 
-}
+    
+    
+
+  }  
+
+    
+
+
+
+
+    
+
+
 
 
 
