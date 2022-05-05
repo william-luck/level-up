@@ -84,9 +84,7 @@ function displayAward(node) {
     } else if (node.id === 'skill-3-percentage') {
         addShield();
     } else if (node.id === 'skill-4-percentage') {
-        const reward4 = document.createElement('p')
-        reward4.textContent = "Earned reward associated with skill 4 (image)"
-        rewardsList.appendChild(reward4);
+        addFollowers();
     }
 }
 
@@ -167,6 +165,41 @@ function addShield() {
         rewardsList.appendChild(reward3);
     })
 }
+
+function addFollowers() {
+    fetch('https://emoji-api.com/emojis/technologist-light-skin-tone?access_key=' + key)
+    .then(response => response.json())
+    .then(data => {
+        const manEmoji = data[0].character
+        const manNode = document.createElement('p')
+        manNode.id = 'axe'
+        manNode.textContent = `${manEmoji}`
+        manNode.style.position = 'absolute';
+        manNode.style.left = '65px';
+        manNode.style.top = '-40px'
+        manNode.style.fontSize = '40px'
+        stickFigureContainer.appendChild(manNode)
+
+        const reward4 = document.createElement('p')
+        reward4.textContent = `Earned reward associated with skill 4 ${manEmoji}`
+        rewardsList.appendChild(reward4);
+
+
+})
+    fetch('https://emoji-api.com/emojis/woman-technologist-light-skin-tone?access_key=' + key)
+    .then(response => response.json())
+    .then(data => {
+        const womanEmoji = data[0].character
+        const womanNode = document.createElement('p')
+        womanNode.id = 'axe'
+        womanNode.textContent = `${womanEmoji}`
+        womanNode.style.position = 'absolute';
+        womanNode.style.left = '-25px';
+        womanNode.style.top = '-40px'
+        womanNode.style.fontSize = '40px'
+        stickFigureContainer.appendChild(womanNode)
+})
+}  
 
 
 
