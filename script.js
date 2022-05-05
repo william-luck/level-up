@@ -2,6 +2,7 @@ const skill1PercentageNode = document.getElementById('skill-1-percentage')
 const skill2PercentageNode = document.getElementById('skill-2-percentage')
 const skill3PercentageNode = document.getElementById('skill-3-percentage')
 const skill4PercentageNode = document.getElementById('skill-4-percentage')
+
 const skill1ProgressBar = document.getElementById('skill-1-progress-bar')
 const skill2ProgressBar = document.getElementById('skill-2-progress-bar')
 const skill3ProgressBar = document.getElementById('skill-3-progress-bar')
@@ -36,25 +37,25 @@ for (const node of taskButtons) {
     node.addEventListener('click', e => {
         if (button1Clicked(e) || button2Clicked(e)) {
             if (percentage1 < 100) {
-                percentage1 = updatePercentage(skill1PercentageNode, percentage1);
+                percentage1 = updatePercentage(skill1PercentageNode, percentage1, ' - Self Compassion');
                 updateProgressBar(skill1ProgressBar, percentage1);
                 addTaskCompleted(e);
             }
         } else if (button3Clicked(e) || button4Clicked(e)){
             if (percentage2 < 100) {
-                percentage2 = updatePercentage(skill2PercentageNode,percentage2);
+                percentage2 = updatePercentage(skill2PercentageNode,percentage2, ' - Persistence');
                 updateProgressBar(skill2ProgressBar, percentage2);
                 addTaskCompleted(e)
             }
         } else if (button5Clicked(e) || button6Clicked(e)) {
             if (percentage3 < 100) {
-                percentage3 = updatePercentage(skill3PercentageNode, percentage3);
+                percentage3 = updatePercentage(skill3PercentageNode, percentage3, ' - Good Habits');
                 updateProgressBar(skill3ProgressBar, percentage3);
                 addTaskCompleted(e)
             }
         } else if (button7Clicked(e) || button8Clicked(e)) {
             if (percentage4 < 100) {
-                percentage4 = updatePercentage(skill4PercentageNode,percentage4);
+                percentage4 = updatePercentage(skill4PercentageNode,percentage4, ' - Support');
                 updateProgressBar(skill4ProgressBar, percentage4);
                 addTaskCompleted(e)
             }
@@ -63,9 +64,9 @@ for (const node of taskButtons) {
 
 
 // updates corresponding percentage
-function updatePercentage(node, percentage) {
+function updatePercentage(node, percentage, skillString) {
     percentage += 20;
-    node.textContent = `Progress: ${percentage}%`;
+    node.textContent = `${percentage}%${skillString}`;
 
     if (percentage === 100) {
         displayAward(node)
