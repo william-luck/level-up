@@ -17,10 +17,13 @@ const rewardsTile = document.getElementById('reward-announcement')
 const rewardsList = document.getElementById('reward-list')
 
 const taskLog = document.getElementById('task-log')
+const completedTasksContainer = document.getElementById('completed-task-container') 
 
 const key = config.accessKey;
 
 const stickFigureContainer = document.getElementById('stick-figure-container')
+
+let tasksCompleted = 0
 
 
 
@@ -228,14 +231,12 @@ function addFollowers() {
 })
 }  
 
-
-
-
 function addTaskCompleted(e) {
+
     // adds name of completed task to tag log
     const completedTask = document.createElement('p')
     completedTask.textContent = e.target.textContent;
-    taskLog.appendChild(completedTask)
+    completedTasksContainer.appendChild(completedTask)
 
     // creates form underneath the completed task
     const inputForm = document.createElement('form')
@@ -258,7 +259,25 @@ function addTaskCompleted(e) {
     inputForm.appendChild(submitButton)
 
     // Adds comment to task completed upon submission of form
-    inputForm.addEventListener('submit', addCommentToTask)        
+    inputForm.addEventListener('submit', addCommentToTask)      
+    
+    tasksCompleted+=1
+    if (tasksCompleted === 1) {
+        const hideButton = createHideButton()
+        let hidden = false
+        hideButton.addEventListener('click', e => {
+            if (hidden === false) {
+                hideButton.textContent = 'Show'
+                hidden = true
+            } else if (hidden === true) {
+                hideButton.textContent = "Hide"
+                hidden = false
+            }
+            
+        })
+    }
+    
+
 }
 
 //Removes form bar, adds comment to task.
@@ -284,6 +303,21 @@ function addCommentToTask(e) {
     
 
   }  
+
+function createHideButton() {
+    const hideButton = document.createElement('button')
+    hideButton.textContent = 'Hide'
+
+    completedTasksContainer.parentNode.insertBefore(hideButton, completedTasksContainer)
+
+    return hideButton
+  }
+
+
+
+//   function hideLog() {
+//     completedTasksContainer.style.display = 'none'
+// }
 
     
 
@@ -324,6 +358,8 @@ function button7Clicked(e) {
 function button8Clicked(e) {
     return e.target.id === 'task-name-button8'
 }
+
+
 
 
 

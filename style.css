@@ -22,3 +22,7 @@ body {
 #reward-list {
     vertical-align: top;
 }
+
+h3 {
+    display: inline-block
+}
