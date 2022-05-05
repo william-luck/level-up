@@ -78,9 +78,7 @@ function displayAward(node) {
     rewardsTile.textContent = "Earned rewards:"
 
     if (node.id === 'skill-1-percentage') {
-        const reward1 = document.createElement('p');
-        reward1.textContent = "Earned reward associated with skill 1 (image)"
-        rewardsList.appendChild(reward1);
+        addHeart();
     } else if (node.id === 'skill-2-percentage') {
         const reward2 = document.createElement('p');
         reward2.textContent = "Earned reward associated with skill 2 (image)"
@@ -115,6 +113,25 @@ function addRandomFace(emoji) {
     randomFace.style.top = '-47px'
     randomFace.style.fontSize = '45px'
     stickFigureContainer.appendChild(randomFace)
+}
+
+function addHeart() {
+    fetch('https://emoji-api.com/emojis/growing-heart?access_key=' + key)
+    .then(response => response.json())
+    .then(data => {
+        const heartEmoji = data[0].character
+        const heartNode = document.createElement('p')
+        heartNode.id = 'heart'
+        heartNode.textContent = `${heartEmoji}`
+        heartNode.style.position = 'absolute';
+        heartNode.style.left = '28px';
+        heartNode.style.top = '27px'
+        heartNode.style.fontSize = '26px'
+        stickFigureContainer.appendChild(heartNode)
+        const reward1 = document.createElement('p');
+        reward1.textContent = `Earned reward associated with skill 1 ${heartEmoji}`
+        rewardsList.appendChild(reward1);
+    })
 }
 
 
