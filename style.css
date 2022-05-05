@@ -28,7 +28,8 @@ body {
 }
 
 h3 {
-    display: inline-block
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #button-container {
@@ -59,6 +60,7 @@ h3 {
 .percentage {
     padding-top: 4px;
     padding-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #game-row {
@@ -69,5 +71,10 @@ h3 {
 
 h1 {
     padding-left: 315px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#tutorial {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
