@@ -7,6 +7,7 @@ const skill1ProgressBar = document.getElementById('skill-1-progress-bar')
 const skill2ProgressBar = document.getElementById('skill-2-progress-bar')
 const skill3ProgressBar = document.getElementById('skill-3-progress-bar')
 const skill4ProgressBar = document.getElementById('skill-4-progress-bar')
+
 let percentage1 = 0;
 let percentage2 = 0;
 let percentage3 = 0;
@@ -20,13 +21,11 @@ const rewardsList = document.getElementById('reward-list')
 const taskLog = document.getElementById('task-log')
 const completedTasksContainer = document.getElementById('completed-task-container') 
 
-const key = config.accessKey;
-
 const stickFigureContainer = document.getElementById('stick-figure-container')
 
 let tasksCompleted = 0
 
-
+const key = config.accessKey;
 
 
 
@@ -35,25 +34,25 @@ let tasksCompleted = 0
 const taskButtons = document.querySelectorAll('.task-button');
 for (const node of taskButtons) {
     node.addEventListener('click', e => {
-        if (button1Clicked(e) || button2Clicked(e)) {
+        if ((e.target.id === 'self-comp-1') || (e.target.id === 'self-comp-2')) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1, ' - Self Compassion');
                 updateProgressBar(skill1ProgressBar, percentage1);
                 addTaskCompleted(e);
             }
-        } else if (button3Clicked(e) || button4Clicked(e)){
+        } else if ((e.target.id === 'pers-1') || (e.target.id === 'pers-2')){
             if (percentage2 < 100) {
                 percentage2 = updatePercentage(skill2PercentageNode,percentage2, ' - Persistence');
                 updateProgressBar(skill2ProgressBar, percentage2);
                 addTaskCompleted(e)
             }
-        } else if (button5Clicked(e) || button6Clicked(e)) {
+        } else if ((e.target.id === 'gh-1') || (e.target.id === 'gh-2')) {
             if (percentage3 < 100) {
                 percentage3 = updatePercentage(skill3PercentageNode, percentage3, ' - Good Habits');
                 updateProgressBar(skill3ProgressBar, percentage3);
                 addTaskCompleted(e)
             }
-        } else if (button7Clicked(e) || button8Clicked(e)) {
+        } else if ((e.target.id === 'supp-1') || (e.target.id === 'supp-2')) {
             if (percentage4 < 100) {
                 percentage4 = updatePercentage(skill4PercentageNode,percentage4, ' - Support');
                 updateProgressBar(skill4ProgressBar, percentage4);
@@ -61,6 +60,10 @@ for (const node of taskButtons) {
             }
         }
 })}
+
+
+
+
 
 
 // updates corresponding percentage
@@ -79,6 +82,60 @@ function updatePercentage(node, percentage, skillString) {
 function updateProgressBar(progressBar, percentage) {
     progressBar.src = `images/${percentage}-percent.png`;
 }
+
+function addTaskCompleted(e) {
+
+    // adds name of completed task to tag log
+    const completedTask = document.createElement('p')
+    completedTask.textContent = e.target.textContent;
+    completedTasksContainer.appendChild(completedTask)
+
+    // creates form underneath the completed task
+    const inputForm = document.createElement('form')
+    inputForm.id = 'input-form'
+    completedTask.appendChild(inputForm)
+
+    // Adds comment bar
+    const inputText = document.createElement('input')
+    inputText.type = 'text'
+    inputText.value = ''
+    inputText.placeholder = 'Add comment..'
+    inputText.id = 'comment'
+    inputForm.appendChild(inputText)
+
+    // Adds submit button 
+    const submitButton = document.createElement('input')
+    submitButton.type = 'submit'
+    submitButton.name = 'submit'
+    submitButton.value = 'Add'
+    inputForm.appendChild(submitButton)
+
+    // Adds comment to task completed upon submission of form
+    inputForm.addEventListener('submit', addCommentToTask)      
+    
+    tasksCompleted+=1
+    if (tasksCompleted === 1) {
+        const hideButton = createHideButton()
+        let hidden = false
+        hideButton.addEventListener('click', e => {
+            if (hidden === false) {
+                hideButton.textContent = 'Show'
+                hidden = true
+                completedTasksContainer.style.display ='none'
+            } else if (hidden === true) {
+                hideButton.textContent = "Hide"
+                hidden = false
+                completedTasksContainer.style.display=''
+            }
+            
+        })
+    }
+    
+
+}
+
+
+
 
 function displayAward(node) {
     rewardsTile.textContent = "Earned rewards:"
@@ -150,9 +207,12 @@ function addHeart() {
         heartNode.style.top = '27px'
         heartNode.style.fontSize = '26px'
         stickFigureContainer.appendChild(heartNode)
+
         const reward1 = document.createElement('p');
         reward1.textContent = `Earned a heart! ${heartEmoji}`
         rewardsList.appendChild(reward1);
+
+        
     })
 }
 
@@ -233,56 +293,7 @@ function addFollowers() {
 })
 }  
 
-function addTaskCompleted(e) {
 
-    // adds name of completed task to tag log
-    const completedTask = document.createElement('p')
-    completedTask.textContent = e.target.textContent;
-    completedTasksContainer.appendChild(completedTask)
-
-    // creates form underneath the completed task
-    const inputForm = document.createElement('form')
-    inputForm.id = 'input-form'
-    completedTask.appendChild(inputForm)
-
-    // Adds comment bar
-    const inputText = document.createElement('input')
-    inputText.type = 'text'
-    inputText.value = ''
-    inputText.placeholder = 'Add comment..'
-    inputText.id = 'comment'
-    inputForm.appendChild(inputText)
-
-    // Adds submit button 
-    const submitButton = document.createElement('input')
-    submitButton.type = 'submit'
-    submitButton.name = 'submit'
-    submitButton.value = 'Add'
-    inputForm.appendChild(submitButton)
-
-    // Adds comment to task completed upon submission of form
-    inputForm.addEventListener('submit', addCommentToTask)      
-    
-    tasksCompleted+=1
-    if (tasksCompleted === 1) {
-        const hideButton = createHideButton()
-        let hidden = false
-        hideButton.addEventListener('click', e => {
-            if (hidden === false) {
-                hideButton.textContent = 'Show'
-                hidden = true
-                completedTasksContainer.style.display ='none'
-            } else if (hidden === true) {
-                hideButton.textContent = "Hide"
-                hidden = false
-                completedTasksContainer.style.display=''
-            }
-            
-        })
-    }
-    
-
-}
 
 //Removes form bar, adds comment to task.
 function addCommentToTask(e) {
@@ -331,37 +342,7 @@ function createHideButton() {
 
 
 
-function button1Clicked(e) {
-    return e.target.id === 'task-name-button1';
-}
 
-function button2Clicked(e) {
-    return e.target.id === 'task-name-button2'
-}
-
-function button3Clicked(e) {
-    return e.target.id === 'task-name-button3'
-}
-
-function button4Clicked(e) {
-    return e.target.id === 'task-name-button4'
-}
-
-function button5Clicked(e) {
-    return e.target.id === 'task-name-button5'
-}
-
-function button6Clicked(e) {
-    return e.target.id === 'task-name-button6'
-}
-
-function button7Clicked(e) {
-    return e.target.id === 'task-name-button7'
-}
-
-function button8Clicked(e) {
-    return e.target.id === 'task-name-button8'
-}
 
 
 
