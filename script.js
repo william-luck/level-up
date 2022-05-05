@@ -80,13 +80,9 @@ function displayAward(node) {
     if (node.id === 'skill-1-percentage') {
         addHeart();
     } else if (node.id === 'skill-2-percentage') {
-        const reward2 = document.createElement('p');
-        reward2.textContent = "Earned reward associated with skill 2 (image)"
-        rewardsList.appendChild(reward2);
+        addAxe();
     } else if (node.id === 'skill-3-percentage') {
-        const reward3 = document.createElement('p');
-        reward3.textContent = "Earned reward associated with skill 3 (image)"
-        rewardsList.appendChild(reward3);
+        addShield();
     } else if (node.id === 'skill-4-percentage') {
         const reward4 = document.createElement('p')
         reward4.textContent = "Earned reward associated with skill 4 (image)"
@@ -131,6 +127,44 @@ function addHeart() {
         const reward1 = document.createElement('p');
         reward1.textContent = `Earned reward associated with skill 1 ${heartEmoji}`
         rewardsList.appendChild(reward1);
+    })
+}
+
+function addAxe() {
+    fetch ('https://emoji-api.com/emojis/axe?access_key=' + key)
+    .then(response => response.json())
+    .then(data => {
+        const axeEmoji = data[0].character
+        const axeNode = document.createElement('p')
+        axeNode.id = 'axe'
+        axeNode.textContent = `${axeEmoji}`
+        axeNode.style.position = 'absolute';
+        axeNode.style.left = '-20px';
+        axeNode.style.top = '25px'
+        axeNode.style.fontSize = '40px'
+        stickFigureContainer.appendChild(axeNode)
+        const reward2 = document.createElement('p');
+        reward2.textContent = `Earned reward associated with skill 2 ${axeEmoji}`
+        rewardsList.appendChild(reward2);
+    }) 
+}
+
+function addShield() {
+    fetch('https://emoji-api.com/emojis/shield?access_key=' + key)
+    .then(response => response.json())
+    .then(data => {
+        const shieldEmoji = data[0].character
+        const shieldNode = document.createElement('p')
+        shieldNode.id = 'axe'
+        shieldNode.textContent = `${shieldEmoji}`
+        shieldNode.style.position = 'absolute';
+        shieldNode.style.left = '55px';
+        shieldNode.style.top = '25px'
+        shieldNode.style.fontSize = '40px'
+        stickFigureContainer.appendChild(shieldNode)
+        const reward3 = document.createElement('p');
+        reward3.textContent = `Earned reward associated with skill 3 ${shieldEmoji}`
+        rewardsList.appendChild(reward3);
     })
 }
 
