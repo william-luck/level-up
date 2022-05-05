@@ -18,7 +18,9 @@ body {
 
 
 #task-log {
-    padding-right: 50px
+    padding-right: 50px;
+    width: 220px;
+    vertical-align: top;
 }
 
 #reward-list {
@@ -45,3 +47,14 @@ h3 {
     transition-duration: 0.4s
 
 }
+
+#percentage-box {
+    vertical-align: top;
+    padding-left: 20px;
+}
+
+.percentage {
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
