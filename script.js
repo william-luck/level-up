@@ -11,6 +11,8 @@ let percentage2 = 0;
 let percentage3 = 0;
 let percentage4 = 0;
 
+let axeRotation = 0
+
 const rewardsTile = document.getElementById('reward-announcement')
 const rewardsList = document.getElementById('reward-list')
 
@@ -81,11 +83,29 @@ function displayAward(node) {
         addHeart();
     } else if (node.id === 'skill-2-percentage') {
         addAxe();
+        window.addEventListener('keydown', rotateAxe)
     } else if (node.id === 'skill-3-percentage') {
         addShield();
     } else if (node.id === 'skill-4-percentage') {
         addFollowers();
     }
+}
+
+// rotates by left and right arrows, only available after axe appears
+function rotateAxe(e) {
+    const axeNode = document.getElementById('axe')
+
+    if (e.key === 'ArrowLeft') {
+        axeRotation-=45
+    } else if (e.key === 'ArrowRight') {
+        axeRotation+=45
+    }
+
+    axeNode.style.transform = `rotate(${axeRotation}deg)`
+
+
+    
+
 }
 
 // gets random smiling face from API to display on avatar
@@ -109,6 +129,7 @@ function addRandomFace(emoji) {
     stickFigureContainer.appendChild(randomFace)
 }
 
+// Has find array iteration
 function addHeart() {
     fetch('https://emoji-api.com/emojis?search=heart&access_key=' + key)
     .then(response => response.json())
@@ -142,7 +163,11 @@ function addAxe() {
         axeNode.style.left = '-20px';
         axeNode.style.top = '25px'
         axeNode.style.fontSize = '40px'
+        axeNode.style.transform = `rotate(${axeRotation}deg)`
         stickFigureContainer.appendChild(axeNode)
+
+        // axeNode.style.transform = 'rotate(90deg)'
+
         const reward2 = document.createElement('p');
         reward2.textContent = `Earned reward associated with skill 2 ${axeEmoji}`
         rewardsList.appendChild(reward2);
@@ -262,10 +287,6 @@ function addCommentToTask(e) {
 
     
 
-
-
-
-    
 
 
 
