@@ -105,6 +105,7 @@ function rotateAxe(e) {
     }
 
     axeNode.style.transform = `rotate(${axeRotation}deg)`
+    
 
 
     
@@ -183,7 +184,7 @@ function addShield() {
     .then(data => {
         const shieldEmoji = data[0].character
         const shieldNode = document.createElement('p')
-        shieldNode.id = 'axe'
+        shieldNode.id = 'shield'
         shieldNode.textContent = `${shieldEmoji}`
         shieldNode.style.position = 'absolute';
         shieldNode.style.left = '55px';
@@ -202,7 +203,7 @@ function addFollowers() {
     .then(data => {
         const manEmoji = data[0].character
         const manNode = document.createElement('p')
-        manNode.id = 'axe'
+        manNode.id = 'male-follower'
         manNode.textContent = `${manEmoji}`
         manNode.style.position = 'absolute';
         manNode.style.left = '65px';
@@ -221,7 +222,7 @@ function addFollowers() {
     .then(data => {
         const womanEmoji = data[0].character
         const womanNode = document.createElement('p')
-        womanNode.id = 'axe'
+        womanNode.id = 'female-follower'
         womanNode.textContent = `${womanEmoji}`
         womanNode.style.position = 'absolute';
         womanNode.style.left = '-25px';

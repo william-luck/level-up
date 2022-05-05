@@ -11,6 +11,8 @@ body {
     background-image: url('images/stick-figure.png');
     background-size: contain;
     background-repeat: no-repeat;
+    padding-right: 30px;
+    
 }
 
 
@@ -28,8 +30,7 @@ h3 {
 }
 
 #button-container {
-    /* height: 400px;
-    width: 400px; */
+    padding-right: 50px;
 }
 
 .task-button {
