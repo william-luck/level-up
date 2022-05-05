@@ -146,7 +146,7 @@ function addHeart() {
         heartNode.style.fontSize = '26px'
         stickFigureContainer.appendChild(heartNode)
         const reward1 = document.createElement('p');
-        reward1.textContent = `Earned reward associated with skill 1 ${heartEmoji}`
+        reward1.textContent = `Earned a heart! ${heartEmoji}`
         rewardsList.appendChild(reward1);
     })
 }
@@ -169,7 +169,7 @@ function addAxe() {
         // axeNode.style.transform = 'rotate(90deg)'
 
         const reward2 = document.createElement('p');
-        reward2.textContent = `Earned reward associated with skill 2 ${axeEmoji}`
+        reward2.textContent = `Earned axe! (You can rotate the axe with your arrow keys, because why not) ${axeEmoji}`
         rewardsList.appendChild(reward2);
     }) 
 }
@@ -188,7 +188,7 @@ function addShield() {
         shieldNode.style.fontSize = '40px'
         stickFigureContainer.appendChild(shieldNode)
         const reward3 = document.createElement('p');
-        reward3.textContent = `Earned reward associated with skill 3 ${shieldEmoji}`
+        reward3.textContent = `Earned shield! ${shieldEmoji}`
         rewardsList.appendChild(reward3);
     })
 }
@@ -208,7 +208,7 @@ function addFollowers() {
         stickFigureContainer.appendChild(manNode)
 
         const reward4 = document.createElement('p')
-        reward4.textContent = `Earned reward associated with skill 4 ${manEmoji}`
+        reward4.textContent = `Earned followers! ${manEmoji}`
         rewardsList.appendChild(reward4);
 
 
