@@ -110,10 +110,12 @@ function addRandomFace(emoji) {
 }
 
 function addHeart() {
-    fetch('https://emoji-api.com/emojis/growing-heart?access_key=' + key)
+    fetch('https://emoji-api.com/emojis?search=heart&access_key=' + key)
     .then(response => response.json())
     .then(data => {
-        const heartEmoji = data[0].character
+        const matchingObj = data.find(element => element.slug === 'growing-heart');
+        const heartEmoji = matchingObj.character
+
         const heartNode = document.createElement('p')
         heartNode.id = 'heart'
         heartNode.textContent = `${heartEmoji}`
@@ -127,6 +129,10 @@ function addHeart() {
         rewardsList.appendChild(reward1);
     })
 }
+
+
+
+
 
 function addAxe() {
     fetch ('https://emoji-api.com/emojis/axe?access_key=' + key)
