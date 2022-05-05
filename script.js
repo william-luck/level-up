@@ -16,6 +16,10 @@ const rewardsList = document.getElementById('reward-list')
 
 const taskLog = document.getElementById('task-log')
 
+const key = config.accessKey;
+
+
+
 
 
 // add event listener to each task button, adds logic to each set of two buttons
