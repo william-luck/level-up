@@ -26,3 +26,21 @@ body {
 h3 {
     display: inline-block
 }
+
+#button-container {
+    /* height: 400px;
+    width: 400px; */
+}
+
+.task-button {
+    width: 220px;
+    border-radius: 6px;
+    background-color: #008CBA;
+    color: white;
+}
+
+.task-button:hover{
+    background-color: #4CAF50;
+    transition-duration: 0.4s
+
+}

@@ -269,9 +269,11 @@ function addTaskCompleted(e) {
             if (hidden === false) {
                 hideButton.textContent = 'Show'
                 hidden = true
+                completedTasksContainer.style.display ='none'
             } else if (hidden === true) {
                 hideButton.textContent = "Hide"
                 hidden = false
+                completedTasksContainer.style.display=''
             }
             
         })
