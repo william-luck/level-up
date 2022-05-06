@@ -1,7 +1,7 @@
-const skill1PercentageNode = document.getElementById('skill-1-percentage')
-const skill2PercentageNode = document.getElementById('skill-2-percentage')
-const skill3PercentageNode = document.getElementById('skill-3-percentage')
-const skill4PercentageNode = document.getElementById('skill-4-percentage')
+const skill1PercentageNode = document.getElementById('self-comp-percentage')
+const skill2PercentageNode = document.getElementById('pers-percentage')
+const skill3PercentageNode = document.getElementById('gh-percentage')
+const skill4PercentageNode = document.getElementById('supp-percentage')
 
 const skill1ProgressBar = document.getElementById('skill-1-progress-bar')
 const skill2ProgressBar = document.getElementById('skill-2-progress-bar')
@@ -34,6 +34,7 @@ const key = config.accessKey;
 const taskButtons = document.querySelectorAll('.task-button');
 for (const node of taskButtons) {
     node.addEventListener('click', e => {
+        console.log(e)
         if ((e.target.id === 'self-comp-1') || (e.target.id === 'self-comp-2')) {
             if (percentage1 < 100) {
                 percentage1 = updatePercentage(skill1PercentageNode, percentage1, ' - Self Compassion');
@@ -140,14 +141,14 @@ function addTaskCompleted(e) {
 function displayAward(node) {
     rewardsTile.textContent = "Earned rewards:"
 
-    if (node.id === 'skill-1-percentage') {
+    if (node.id === 'self-comp-percentage') {
         addHeart();
-    } else if (node.id === 'skill-2-percentage') {
+    } else if (node.id === 'pers-percentage') {
         addAxe();
         window.addEventListener('keydown', rotateAxe)
-    } else if (node.id === 'skill-3-percentage') {
+    } else if (node.id === 'gh-percentage') {
         addShield();
-    } else if (node.id === 'skill-4-percentage') {
+    } else if (node.id === 'supp-percentage') {
         addFollowers();
     }
 }
