@@ -35,6 +35,8 @@ Users have the ability to add comments to their tasks completed, which appear in
 
 A rewards list also appears upon completion of the first skill leveled up below the primary game bar. 
 
+[Image](https://i.imgur.com/0J9PTt4.gifv)
+
 ## Basic functionality
 
 Once you load the app, a random smiling face emoji will appear over the stick figure avatar. A GET request is made to an endpoint with 29 different smiling characters. The app calculates a random number to access a random smiling emoji. While the API is free and open, it does require an access key (which you can get instantly by providing your email). The key is not visible in the repo, and has been hidden with a config file.
@@ -69,29 +71,6 @@ This project can extended in several different ways, most helpfully with a JSON 
 ## Sources: 
 
 Open Emoji API: https://emoji-api.com/
+
 Stick figure:http://www.stickpng.com/img/people/stick-figures/simple-stick-figure
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Features: 
-
-
-# Sources: 
