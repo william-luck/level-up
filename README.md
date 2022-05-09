@@ -35,7 +35,7 @@ Users have the ability to add comments to their tasks completed, which appear in
 
 A rewards list also appears upon completion of the first skill leveled up below the primary game bar. 
 
-[gif](https://i.imgur.com/0J9PTt4.gif)
+![gif](https://i.imgur.com/0J9PTt4.gif)
 
 ## Basic functionality
 
