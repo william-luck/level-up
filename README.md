@@ -41,7 +41,7 @@ A rewards list also appears upon completion of the first skill leveled up below 
 
 Once you load the app, a random smiling face emoji will appear over the stick figure avatar. A GET request is made to an endpoint with 29 different smiling characters. The app calculates a random number to access a random smiling emoji. While the API is free and open, it does require an access key (which you can get instantly by providing your email). The key is not visible in the repo, and has been hidden with a config file.
 
-A 'click' event listener is added to each of the task buttons. Once clicked, using `e.target.id` associted with each button click event to correctly line up the tasks with skills, three things immediately occur, each with its own generic function to avoid dry code: 
+I used three different event listeners (click, submit, and keydown) to get the app going. I wrote a [blog post](https://dev.to/williamluck/navigating-the-javascript-event-object-2po8) about event objects as part of this project. A 'click' event listener is added to each of the task buttons. Once clicked, using `e.target.id` associted with each button click event to correctly line up the tasks with skills, three things immediately occur, each with its own generic function to avoid dry code: 
 1. The progress bar updates to add a completed portion of the bar, where each portion is 20 percentage points. These progress bars were roughly made in google slides and screenshotted for each stage of completion.
 2. The task completed appears in a task log, with a show/hide button. The ability to add a comment is implemented with a 'submit' event listener on a form node.
 3. The percentage text to the right of the bar updates, 20% at a time.
