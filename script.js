@@ -31,6 +31,7 @@ let axeRotation = 0
 
 
 
+
 // gets random smiling face from API to display on avatar
 fetch('https://emoji-api.com/emojis?search=smiling&access_key=' + key)
 .then(response => response.json())
@@ -161,7 +162,8 @@ function addTaskCompleted(e) {
 
 //Removes form bar, adds comment to task. Callback function for submit event listener. 
 function addCommentToTask(e) {
-    e.preventDefault();
+   
+    e.preventDefault()
 
     const comment = e.target.comment.value
     const completedTask = e.target.parentNode  
@@ -186,9 +188,6 @@ function addCommentToTask(e) {
 
     return hideButton
   }
-
-
-
 
 
 function displayAward(node) {
